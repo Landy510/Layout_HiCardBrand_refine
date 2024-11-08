@@ -1,9 +1,26 @@
 .advantage-list {
   padding: 100px 0;
+  counter-reset: list-counter 0;
 }
 .advantage {
   width: 900px;
   margin: 0 auto 100px;
+}
+.advantage:nth-of-type(even) .topic{
+  margin-left: auto;
+}
+.advantage:nth-of-type(even) .topic h2::before {
+  order: 1;
+}
+.advantage:nth-of-type(even) .pic{
+  margin-left: 0;
+}
+.advantage:nth-of-type(even) .innovation-list {
+  margin-left: auto;
+}
+.advantage:nth-of-type(even) .pic .icon-youtube {
+  left: 0;
+  transform: translate(-20%, -50%);
 }
 .advantage .topic {
   width: 300px;
@@ -17,8 +34,11 @@
   display: flex;
   align-items: center;
 }
-.advantage .topic h2 span {
-  font-size: 80px;
+.advantage .topic h2::before {
+  content: "0" counter(list-counter);
+  counter-increment: list-counter 1;
+  display: inline-block;
+  color: #fff;
   writing-mode: vertical-rl;
 }
 .advantage .topic>div {
@@ -39,20 +59,21 @@
   margin-left: 150px;
   margin-bottom: -35px;
   position: relative;
+  width: fit-content;
 }
 .advantage .pic .icon-youtube {
   position: absolute;
   top: 50%;
   right: 0;
-  transform: translate(-130%, -50%);
+  transform: translate(20%, -50%);
 }
 .advantage .pic .bg-gray {
   background-color: #eeeeee;
   width: 400px;
   height: 250px;
   position: absolute;
+  top: -50px;
   right: -50px;
-  top: -80px;
   z-index: -1;
 }
 .advantage .innovation-list {
